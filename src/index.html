@@ -1,37 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/index.css">
+
   <title>Frontend Mentor | Rock, Paper, Scissors</title>
 
-  Score
-  Rules
-
-  You Picked
-  The House Picked
-
-  You Win
-  You Lose
-
-  Play Again
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
+
 <body>
+  <div class="container">
+      <div class="splash-screen">
+        <h1>Welcome to the Rock Paper Scissors Game</h1>
+        <button type="button">Read the rules</button>
+      </div>
+      
+      <div class="game">
+        <div class="score-board-wrapper">
+          <div class="score-board">
+              <div class="logo">
+                  <img src="./images/logo.svg" alt="original logo">
+                </div>
+                <div class="score-wrapper">
+                  <small>score</small>
+                  <h2 class="score">12</h2>
+                </div>
+          </div>
+          
+        </div>
+        <div class="play">
+            <div class="sign-pick">
+              <div class="paper sign-wrapper">
+                <div class="sign">
+                  <img src="./images/icon-paper.svg" alt="paper sign">
+                </div>
+              </div>
+              <div class="scissors sign-wrapper">
+                <div class="sign">
+                  <img src="./images/icon-scissors.svg" alt="scissors sign">
+                </div>
+              </div>
+              <div class="rock sign-wrapper">
+                <div class="sign">
+                  <img src="./images/icon-rock.svg" alt="rock sign">
+                </div>
+              </div>
+            </div>
 
 
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+
+            <div class="battle">
+              <div class="player">
+                <div></div>
+                <p>you picked</p>
+              </div>
+              <div class="cpu">
+                  <div></div>
+                  <p>the House picked</p>
+              </div>
+            </div>
+            <div class="result">
+              <h1></h1>
+              <button type="button">Play Again</button>
+            </div>
+            <div class="in-game-rules">
+              <button type="button">Rules</button>
+            </div>
+        </div>
+      </div>
   </div>
+  
+<!-- 
+  <div class="rules">
+      <h2>rules</h2>
+      <img src="./images/image-rules.svg" alt="original game rules">
+    </div> -->
+
+
+<!-- 
+  <div class="attribution">
+    <p>
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener">Frontend
+        Mentor</a>.
+      Coded by <a href="https://www.frontendmentor.io/profile/tomi-david" target="_blank" rel="noopener">Ojo Oloruntomi
+        David</a>
+    </p>
+  </div> -->
+
+  <script src="./js/index.js"></script>
 </body>
+
 </html>
