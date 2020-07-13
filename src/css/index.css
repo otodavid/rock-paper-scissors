@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black-clr: hsl(229, 25%, 31%);
+    --blue-clr: hsl(229, 64%, 46%);
+    --score-border: hsl(217, 16%, 45%);
+}
+
+html {
+    font-size: 100%;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+body {
+    background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%)); 
+}
+
+.game {
+    height: 100vh;
+}
+
+.score-board-wrapper {
+    height: 20vh;
+    display: flex;
+    align-items: center;
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 50vmax;
+    margin: 0 auto;
+    border: 3px solid var(--score-border);
+    border-radius: 6px;
+    padding: .7rem 1rem;
+
+}
+
+.logo {
+    width: 25%;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.score-wrapper {
+    background-color: white;
+    text-align: center;
+    padding: .5rem 1.3rem;
+    border-radius: 4px;
+}
+
+.score-wrapper small {
+    color: var(--blue-clr);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.score {
+    color: var(--black-clr);
+    font-size: 2.5rem;
+    font-weight: 700;
+} 
+
+.play {
+    height: 80vh;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.sign-pick {
+    width: 100%;
+    background: url(../images/bg-triangle.svg) center / 50% no-repeat;
+    background-color: rgb(125, 125, 224);
+    position: relative;
+    padding: 25vh 0;
+}
+
+.sign-wrapper {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(221, 139, 139);
+    position: absolute;
+    padding: .6rem;
+    border-radius: 50%;
+}
+
+.paper {
+    top: 10vh;
+    left: 20vw;
+    background: linear-gradient(to right, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+    box-shadow: 0 5px 0 hsl(230, 89%, 62%);
+}
+
+.scissors {
+    top: 10vh;
+    left: 55vw;
+    background: linear-gradient(to right, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+    box-shadow: 0 5px 0 hsl(39, 89%, 49%);
+}
+
+.rock {
+    top: 25vh;
+    left: 38vw;
+    background: linear-gradient(to right, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+    box-shadow: 0 5px 0 hsl(349, 71%, 52%);
+   color: rgb(26,41,68);
+}
+
+.sign {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 5px 0px rgb(208, 227, 233);
+}
+
+.sign > img {
+    width: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.in-game-rules {
+    position: absolute;
+    bottom: 0;
+}
+
+.rules, .splash-screen, .battle, .result {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.attribution { 
+    font-size: 11px; 
+    text-align: center; 
+}
+    
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+}
