@@ -15,13 +15,14 @@ html {
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
 
-body {
-    background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%)); 
+.container>div {
+    height: 100vh;
 }
 
 .game {
     height: 100vh;
-    /* background-color: hsl(214, 47%, 23%); */
+    background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    display: none;
 }
 
 .score-board-wrapper {
@@ -67,7 +68,7 @@ body {
     color: var(--black-clr);
     font-size: 2.5rem;
     font-weight: 700;
-} 
+}
 
 .play {
     width: 80%;
@@ -75,26 +76,26 @@ body {
     height: 80vh;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 3fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
     justify-items: center;
     align-items: center;
-} 
+}
 
 .sign-pick {
-    grid-row: 1/2;
+    grid-row: 1/4;
     width: 100%;
     height: 100%;
     position: relative;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    justify-items: center;
     align-items: center;
-    
+    /* display: none; */
 }
 
 .image {
-    width: 60%;
+    width: 200px;
     margin: 0 auto;
-    margin-top: -70px
+    margin-top: -40px
 }
 
 .image img {
@@ -109,16 +110,15 @@ body {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
+    grid-template-areas:
         'paper scissors'
         'rock rock';
-    justify-items: center;
     align-items: center;
 }
 
 .sign-wrapper {
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
     padding: .6rem;
     border-radius: 50%;
 }
@@ -131,14 +131,16 @@ body {
 .scissors {
     background: linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
     box-shadow: 0 5px 0 hsl(39, 89%, 49%);
+    justify-self: end;
 }
 
 .rock {
     background: linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
     box-shadow: 0 5px 0 hsl(349, 71%, 52%);
     grid-area: rock;
-    align-self: start;
     margin-top: -50px;
+    justify-self: center;
+    align-self: start;
 }
 
 .sign {
@@ -152,26 +154,91 @@ body {
     box-shadow: inset 0 5px 0px rgb(222, 230, 233);
 }
 
-.sign > img {
+.sign>img {
     width: 50%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-.in-game-rules {
-    grid-row: 2/3;
+.battle {
+    grid-row: 1/4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: none;
 }
 
-.in-game-rules button {
+.main {
+    grid-column: 1/3;
+    grid-row: 1/3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.player,
+.cpu {
+    flex-basis: 45%;
+}
+
+.dummy {
+    width: 80px;
+    height: 80px;
+    background: hsl(237, 49%, 15%);
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.main p {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: .7rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.result {
+    grid-column: 1/3;
+    grid-row: 3/4;
+    align-self: end;
+    display: none;
+}
+
+.result h1 {
+    text-transform: uppercase;
+    font-size: 3rem;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    padding: 1rem;
+}
+
+.result button {
+    background-color: #fff;
+    color: hsl(214, 47%, 23%);
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: .1rem;
+}
+
+
+
+
+
+
+.game-rules {
+    grid-row: 4/5;
+}
+
+.game-rules {
     background-color: transparent;
     border: 2px solid rgba(255, 255, 255, 0.527);
     width: 125px;
@@ -181,29 +248,118 @@ body {
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 600;
+    cursor: pointer;
 }
 
-.rules, .splash-screen, .battle, .result {
+.rules {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 2rem;
     display: none;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-.attribution { 
-    font-size: 11px; 
-    text-align: center; 
+.rules.show {
+    display: flex;
 }
+
+.rules h2 {
+    text-transform: uppercase;
+    color: var(--black-clr);
+    font-size: 2rem;
+}
+
+.rules i {
+    color: rgb(204, 202, 202);
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.rules i:hover,
+.rules i:focus {
+    color: rgb(192, 37, 37);
+}
+
+
+
+.splash-screen {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+.splash-screen h1 {
+    font-size: 2.55rem;
+    text-align: center;
+    color: white;
+    padding: 1rem;
+}
+
+.splash-screen button {
+    background-color: transparent;
+    border: 0;
+    width: 125px;
+    padding: 10px;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.918);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 1rem;
+    outline: 0;
+    transition: transform 0.5s ease;
+}
+
+.splash-screen button:first-of-type {
+    background-color: hsl(230, 89%, 65%);
+}
+
+.splash-screen button:first-of-type:hover {
+    background-color: hsl(230, 75%, 45%);
+}
+
+.splash-screen button:active {
+    transform: translateY(10px);
+}
+
+.splash-screen button:last-of-type {
+    background-color: var(--black-clr);
+    border: 2px solid rgba(255, 255, 255, 0.527);
+    width: 190px;
+}
+
+.splash-screen button:last-of-type:hover {
+    background-color: hsl(219, 17%, 51%);
+}
+
+
+
+
+
+
+
+
+
+
+    .attribution {
+        font-size: 11px;
+        text-align: center;
+    }
+
+    .attribution a {
+        color: hsl(228, 45%, 44%);
+    }
+
+
+    .show {
+        display: grid;
+    }
     
-.attribution a { 
-    color: hsl(228, 45%, 44%); 
-}
+    .hide {
+        display: none;
+    }
+    
