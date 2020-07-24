@@ -9,7 +9,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap"
     rel="stylesheet">
-    <link rel="stylesheet" href="./css/all.min.css">
+  <link rel="stylesheet" href="./css/all.min.css">
+  <link rel="stylesheet" href="./css/animations.css">
   <link rel="stylesheet" href="./css/index.css">
 
   <title>Frontend Mentor | Rock, Paper, Scissors</title>
@@ -32,7 +33,7 @@
           </div>
           <div class="score-wrapper">
             <small>score</small>
-            <h2 class="score">12</h2>
+            <h2 class="score">0</h2>
           </div>
         </div>
 
@@ -40,9 +41,6 @@
 
       <div class="play">
         <div class="sign-pick">
-          <div class="image">
-            <img src="./images/bg-triangle.svg" alt="bg-triangle">
-          </div>
           <div class="content">
             <div class="paper sign-wrapper">
               <div class="sign">
@@ -63,20 +61,23 @@
         </div>
 
         <div class="battle">
-          <div class="main">
-            <div class="player">
-              <p>you picked</p>
+            <div>
+              <div class="player">
+                <p>you picked</p>
+              </div>
             </div>
-            <div class="cpu">
-              <div class="dummy"></div>
-              <p>the House picked</p>
-            </div>
-          </div>
 
-          <div class="result">
-            <h1 class="decision"></h1>
-            <button type="button">Play Again</button>
-          </div>
+            <div>
+              <div class="cpu">
+                <div class="dummy"></div>
+                <p>the House picked</p>
+              </div>
+            </div>
+
+            <div class="result">
+                <h1 class="decision"></h1>
+                <button type="button">Play Again</button>
+              </div>
         </div>
 
         <div>
@@ -86,12 +87,11 @@
     </div>
 
     <div class="rules">
-        <h2>rules</h2>
-        <img src="./images/image-rules.svg" alt="original game rules">
-        <i class="fas fa-times"></i>
-      </div>
+      <h2>rules</h2>
+      <img src="./images/image-rules.svg" alt="original game rules">
+      <i class="fas fa-times"></i>
+    </div>
   </div>
-
 
 
   <!-- 
@@ -103,7 +103,7 @@
         David</a>
     </p>
   </div> -->
-
+  <script src="./js/wow.min.js"></script>
   <script src="./js/index.js"></script>
 </body>
 

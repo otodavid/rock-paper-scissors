@@ -1,0 +1,135 @@
+@keyframes rulesFade{
+    from {
+        transform: translateY(-100vh);
+    }
+    to { 
+        transform: translateY(0);
+    }
+}
+
+.rulesFadeIn {
+    animation: rulesFade .5s forwards;
+}
+
+@keyframes growIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.growIn {
+    animation: growIn .5s forwards;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0px);
+    }
+
+    15% {
+        transform: translateY(-40px);
+    }
+
+    30% {
+        transform: translateY(0px);
+    }
+
+    45% {
+        transform: translateY(-40px);        
+    }
+    60% {
+        transform: translateY(0px);
+    }
+    75% {
+        transform: translateY(-40px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+@keyframes gameSlideIn {
+    from {
+        transform: translateX(100vw);
+    }
+    to {
+        transform: translateX(0);        
+    }
+}
+
+.gameSlideIn {
+    animation: gameSlideIn .5s forwards;
+}
+
+
+@keyframes rulesFadeOut{
+    from {
+        transform: translateY(0vh);
+    }
+    to { 
+        transform: translateY(-100vh);
+    }
+}
+
+.rulesFadeOut {
+    animation: rulesFadeOut .5s forwards;
+}
+
+@keyframes flipIn {
+    from {
+        transform: rotateY(90deg);
+    }
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+.flipIn {
+    animation: flipIn .5s forwards .2s;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100vw);
+    }
+    to {
+        transform: translateX(0);        
+    }
+}
+
+.slideInLeft {
+    animation: slideInLeft .5s forwards;
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100vw);
+    }
+}
+
+.slideOutLeft {
+    animation: slideOutLeft .5s forwards;
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0vw);
+    }
+
+    to {
+        transform: translateX(100vw);
+    }
+}
+
+.slideOutRight {
+    animation: slideOutRight .5s forwards;
+}

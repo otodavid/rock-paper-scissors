@@ -190,8 +190,8 @@ html {
 }
 
 .sign-wrapper {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     padding: .6rem;
     border-radius: 50%;
     position: relative;
@@ -210,8 +210,8 @@ html {
     position: absolute;
     bottom: -5px;
     left: 0;
-    height: 120px;
-    width: 120px;
+    height: 130px;
+    width: 130px;
     border-radius: 50%;
     box-shadow: 0 5px 5px hsla(237, 49%, 15%, 0.4);
     cursor: pointer;
@@ -268,8 +268,8 @@ html {
 .battle {
     grid-row: 1/4;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    /* grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr); */
     width: 100%;
     height: 100%;
     align-items: center;
@@ -278,44 +278,41 @@ html {
     position: absolute;
 }
 
-.battle > div:not(:last-of-type) {
-    height: 170px;
-    transition: height .5s ease-in-out;
-}
+/* .main {
+    grid-column: 1/3;
+    grid-row: 1/3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+} */
 
 .player,
 .cpu {
+    flex-basis: 45%;
     position: relative;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-between;
-    height: 100%;
-    width: 120px;
 }
 
 .dummy {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     background: hsl(237, 49%, 15%);
-    margin: 0rem auto 0;
+    margin: 0 auto;
     border-radius: 50%;
-    justify-self: center;
 }
 
-.battle p {
+.main p {
     color: white;
     text-transform: uppercase;
     font-weight: 700;
     font-size: .7rem;
     text-align: center;
+    margin-top: 2rem;
 }
 
 .result {
     grid-column: 1/3;
     grid-row: 3/4;
     align-self: end;
-    flex: 0 1 100%;
-    height: 133.716px;
     transform: rotateY(90deg);
 }
 
@@ -343,7 +340,7 @@ html {
 }
 
 .win {
-    transition: all 1s ease;
+    transition: 1s all ease;
 }
 
 .win::before {
