@@ -75,7 +75,7 @@ const unde = function (item, i) {
         setTimeout(function () {
             result.classList.add('flipIn');
             decision.textContent = "you draw";
-        }, 1000);
+        }, 1200);
     }
     switch (item.classList[0]) {
         case 'paper':
@@ -142,6 +142,7 @@ const gameStart = function () {
 const scoringSystem = function () {
     let test = document.querySelector('.score');
     let testValue = parseInt(test.textContent);
+    console.log(decision.textContent);
     setTimeout(function () {
         switch (decision.textContent.toLowerCase()) {
             case 'you win':
@@ -153,13 +154,18 @@ const scoringSystem = function () {
                 test.textContent = testValue;
                 break;
             case 'you lose':
-                testValue -= 1;
-                test.textContent = testValue;
+                if(testValue <= 0) {
+                    testValue = 0;
+                } else {
+                    testValue -= 1;
+                    test.textContent = testValue;
+                }
+                
                 break;
             default:
                 break;
         }
-    }, 500)
+    }, 1200)
 }
 
 result.lastElementChild.addEventListener('click', playAgain);
