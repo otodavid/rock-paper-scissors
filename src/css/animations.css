@@ -1,14 +1,27 @@
-@keyframes rulesFade{
+@keyframes slideInTop{
     from {
-        transform: translateY(-100vh);
+        transform: translateY(-2000px);
     }
     to { 
         transform: translateY(0);
     }
 }
 
-.rulesFadeIn {
-    animation: rulesFade .5s forwards;
+.slideInTop {
+    animation: slideInTop .5s forwards;
+}
+
+@keyframes slideOutTop{
+    from {
+        transform: translateY(0);
+    }
+    to { 
+        transform: translateY(-2000px);
+    }
+}
+
+.slideOutTop {
+    animation: slideOutTop .5s forwards;
 }
 
 @keyframes growIn {
@@ -23,6 +36,60 @@
 
 .growIn {
     animation: growIn .5s forwards;
+}
+
+@keyframes SlideInRight {
+    from {
+        transform: translateX(2000px);
+    }
+    to {
+        transform: translateX(0px);        
+    }
+}
+
+.SlideInRight {
+    animation: SlideInRight .5s forwards;
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(2000px);
+    }
+}
+
+.slideOutRight {
+    animation: slideOutRight .5s forwards;
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-2000px);
+    }
+}
+
+.slideOutLeft {
+    animation: slideOutLeft .5s forwards;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-2000px);
+    }
+    to {
+        transform: translateX(0);        
+    }
+}
+
+.slideInLeft {
+    animation: slideInLeft .5s forwards;
 }
 
 @keyframes bounce {
@@ -52,34 +119,6 @@
     }
 }
 
-
-@keyframes gameSlideIn {
-    from {
-        transform: translateX(100vw);
-    }
-    to {
-        transform: translateX(0);        
-    }
-}
-
-.gameSlideIn {
-    animation: gameSlideIn .5s forwards;
-}
-
-
-@keyframes rulesFadeOut{
-    from {
-        transform: translateY(0vh);
-    }
-    to { 
-        transform: translateY(-100vh);
-    }
-}
-
-.rulesFadeOut {
-    animation: rulesFadeOut .5s forwards;
-}
-
 @keyframes flipIn {
     from {
         transform: rotateY(90deg);
@@ -90,46 +129,27 @@
 }
 
 .flipIn {
-    animation: flipIn .5s forwards .2s;
+    animation: flipIn .5s forwards;
 }
 
-@keyframes slideInLeft {
+@keyframes increaseWidth {
     from {
-        transform: translateX(-100vw);
+        width: 65%;
     }
     to {
-        transform: translateX(0);        
+        width: 100%;
     }
 }
 
-.slideInLeft {
-    animation: slideInLeft .5s forwards;
+.increaseWidth {
+    animation: increaseWidth .3s forwards;
 }
 
-@keyframes slideOutLeft {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-100vw);
-    }
+.compAnimation {
+    animation: increaseWidth .3s forwards, SlideInRight .3s forwards;
 }
 
-.slideOutLeft {
-    animation: slideOutLeft .5s forwards;
-}
-
-@keyframes slideOutRight {
-    from {
-        transform: translateX(0vw);
-    }
-
-    to {
-        transform: translateX(100vw);
-    }
-}
-
-.slideOutRight {
-    animation: slideOutRight .5s forwards;
+.compAnimationRev {
+    animation: increaseWidth 30s forwards reverse,
+    slideOutRight .3s forwards;
 }
