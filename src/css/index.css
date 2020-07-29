@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+*::selection {
+    color: none;
+    background-color: none;
+}
+
 :root {
     --black-clr: hsl(229, 25%, 31%);
     --blue-clr: hsl(229, 64%, 46%);
@@ -17,36 +22,37 @@ html {
 
 .container {
     position: relative;
+    min-height: 200px;
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
+    background: radial-gradient(circle at 50% 0%, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
 }
 
 .container>div {
-    height: 100%;
     width: 100%;
     position: absolute;
 }
 
-.splash-screen {
+.intro {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    height: 100vh;
+    overflow: hidden;
 }
 
-.splash-screen h1 {
-    font-size: 2.55rem;
+h1 {
+    font-size: 2.5rem;
     text-align: center;
     color: white;
     padding: 1rem;
 }
 
-.splash-screen button {
-    background-color: transparent;
+.intro button {
     border: 0;
     width: 125px;
-    padding: 10px;
+    padding: 13px 10px;
     border-radius: 8px;
     color: rgba(255, 255, 255, 0.918);
     text-transform: uppercase;
@@ -58,25 +64,24 @@ html {
     transition: transform 0.5s ease;
 }
 
-.splash-screen button:first-of-type {
-    background-color: hsl(230, 89%, 65%);
-}
-
-.splash-screen button:first-of-type:hover {
-    background-color: hsl(230, 75%, 45%);
-}
-
-.splash-screen button:active {
+.intro button:active {
     transform: translateY(10px);
 }
 
-.splash-screen button:last-of-type {
-    background-color: var(--black-clr);
-    border: 2px solid rgba(255, 255, 255, 0.527);
-    width: 190px;
+.intro button:first-of-type {
+    background-color: hsl(230, 89%, 65%);
 }
 
-.splash-screen button:last-of-type:hover {
+.intro button:first-of-type:hover {
+    background-color: hsl(230, 75%, 45%);
+}
+
+.intro button:last-of-type {
+    background-color: var(--black-clr);
+    width: 200px;
+}
+
+.intro button:last-of-type:hover {
     background-color: hsl(219, 17%, 51%);
 }
 
@@ -86,10 +91,10 @@ html {
     justify-content: space-around;
     align-items: center;
     background-color: #fff;
+    height: 100vh;
     padding-top: 2rem;
-    transform: translateY(-100vh);
+    transform: translateY(-3000px);
 }
-
 
 .rules h2 {
     text-transform: uppercase;
@@ -109,22 +114,19 @@ html {
 }
 
 .game {
-    background: radial-gradient(circle at 50% 0%, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
     transform: translateX(100vw);
 }
 
 .score-board-wrapper {
-    height: 20vh;
-    display: flex;
-    align-items: center;
+    padding: 2rem 0;
 }
 
 .score-board {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
-    max-width: 50vmax;
+    width: 85%;
+    max-width: 55vmax;
     margin: 0 auto;
     border: 3px solid var(--score-border);
     border-radius: 6px;
@@ -132,7 +134,7 @@ html {
 }
 
 .logo {
-    width: 25%;
+    width: 30%;
 }
 
 .logo img {
@@ -141,9 +143,10 @@ html {
 
 .score-wrapper {
     background-color: white;
+    flex: 0 1 15%;
     text-align: center;
     padding: .5rem 1.3rem;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 .score-wrapper small {
@@ -161,24 +164,16 @@ html {
 .play {
     width: 80%;
     margin: 0 auto;
-    height: 80vh;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
-    justify-items: center;
-    align-items: center;
+    grid-template-rows: 3fr 1fr;
     position: relative;
 }
 
 .sign-pick {
-    grid-row: 1/4;
+    grid-row: 1/2;
     width: 100%;
     height: 100%;
-    position: relative;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    /* display: none; */
 }
 
 .content {
@@ -199,10 +194,11 @@ html {
 
 .sign-pick .sign-wrapper {
     transform: scale(0);
+    position: absolute;
 }
 
 .player .sign-wrapper {
-    animation: bounce 1s forwards;
+    animation: bounce 1s forwards .2s;
 }
 
 .sign-wrapper::after {
@@ -223,7 +219,6 @@ html {
 }
 
 .sign-pick .paper {
-    position: absolute;
     top: 80px;
     left: -40px;
 }
@@ -234,7 +229,6 @@ html {
 }
 
 .sign-pick .scissors {
-    position: absolute;
     top: 80px;
     right: -40px;
 }
@@ -245,7 +239,6 @@ html {
 }
 
 .sign-pick .rock {
-    position: absolute;
     bottom: 111px;
     left: 60px;
 }
@@ -266,15 +259,14 @@ html {
 }
 
 .battle {
-    grid-row: 1/4;
+    grid-row: 1/2;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     width: 100%;
     height: 100%;
     align-items: center;
-    /* display: none; */
-    transform: translateX(100vw);
+    transform: translateX(2000px);
     position: absolute;
 }
 
@@ -297,7 +289,7 @@ html {
     width: 100px;
     height: 100px;
     background: hsl(237, 49%, 15%);
-    margin: 0rem auto 0;
+    margin: 0 auto;
     border-radius: 50%;
     justify-self: center;
 }
@@ -311,8 +303,6 @@ html {
 }
 
 .result {
-    grid-column: 1/3;
-    grid-row: 3/4;
     align-self: end;
     flex: 0 1 100%;
     height: 133.716px;
@@ -321,14 +311,10 @@ html {
 
 .result h1 {
     text-transform: uppercase;
-    font-size: 3rem;
-    color: #fff;
     font-weight: 700;
-    text-align: center;
-    padding: 1rem;
 }
 
-.result button {
+.play-again {
     background-color: #fff;
     color: hsl(214, 47%, 23%);
     display: block;
@@ -342,11 +328,11 @@ html {
     letter-spacing: .1rem;
 }
 
-.win {
+.winner {
     transition: all 1s ease;
 }
 
-.win::before {
+.winner::before {
     content: '';
     position: absolute;
     top: -80px;
@@ -357,15 +343,10 @@ html {
     border-radius: 50%;
 }
 
-.play div:last-of-type {
-    grid-row: 4/5;
-}
-
-.game-rules {
-    grid-row: 4/5;
-}
-
-.game-rules {
+.rules-btn {
+    grid-row: 2/3;
+    justify-self: center;
+    align-self: center;
     background-color: transparent;
     border: 2px solid rgba(255, 255, 255, 0.527);
     width: 125px;
@@ -378,19 +359,155 @@ html {
     cursor: pointer;
 }
 
+.rules-btn:hover, 
+.rules-btn:focus,
+.result button:hover, 
+.result button:focus {
+    outline: 0;
+} 
+
 .attribution {
     font-size: 11px;
     text-align: center;
+    padding: 1rem;
+}
+
+.attribution p {
+    font-size: .8rem;
+    font-weight: 600;
+    color: rgb(51, 51, 51);
 }
 
 .attribution a {
     color: hsl(228, 45%, 44%);
+    font-weight: 700;
+    text-decoration: none;
 }
 
-.show {
-    display: grid;
+.attribution a:hover {
+    color: hsl(228, 66%, 21%);
+    text-decoration: underline;
 }
 
-.hide {
-    display: none;
+@media screen and (min-width: 1200px) {
+    .score-board-wrapper {
+        /* height: 30vh; */
+    }
+
+    .score-board {
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .score-wrapper {
+        padding: .7rem 3rem;
+    }
+
+    .logo {
+        width: 20%;
+    }
+
+    .score {
+        font-size: 4rem;
+    }
+
+    .play {
+        grid-template-rows: 3fr .5fr;
+        width: 100%;
+        padding: 1% 3%;
+    }
+
+    .content {
+        width: 370px;
+        height: 530px;
+    }
+
+    .sign-wrapper {
+        width: 200px;
+        height: 200px;
+        padding: 1.4rem;
+    }
+
+    .sign-wrapper::after {
+        width: 200px;
+        height: 200px;
+    }
+
+    .sign-pick .paper {
+        top: 20px;
+        left: -70px;
+    }
+
+    .sign-pick .scissors {
+        top: 20px;
+        right: -70px;
+    }
+
+    .sign-pick .rock {
+        bottom: 50px;
+        left: 85px;
+    }
+
+    .rules-btn {
+        justify-self: end;
+    }
+
+    .battle {
+        padding: 0 7%;
+        margin: 0 auto;
+        align-items: center;
+        width: 65%;
+        left: 0;
+        right: 0;
+    }
+
+    .battle > div:not(:last-of-type) {
+        height: 80%;
+        flex: 0 1 300px;
+    }
+
+    .battle > div:nth-of-type(2) {
+        order: 2;
+    }
+
+    .player,
+    .cpu {
+        flex-flow: column-reverse wrap;
+        width: 300px;
+        height: 90%;
+    }
+
+    .battle .sign-wrapper {
+        width: 300px;
+        height: 300px;
+        padding: 2.5rem;
+    }
+    
+    .battle .sign-wrapper::after {
+        width: 300px;
+        height: 300px;
+    }
+
+    .dummy {
+        width: 250px;
+        height: 250px;
+        margin-bottom: 30px;
+    }
+
+    .winner::before {
+        width: 700px;
+        height: 700px;
+        top: -111px;
+        left: -200px;
+    }
+
+    .result {
+        order: 1;
+        flex: 0 1 .1rem;
+        align-self: center;
+    }
+
+    .battle .sizeIncrease {
+        flex: 0 1 17rem;
+    }
 }
