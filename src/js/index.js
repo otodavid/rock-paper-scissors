@@ -19,7 +19,7 @@ const app = function () {
 
     const allSigns = ['paper', 'scissors', 'rock'];
 
-    if (storage !== undefined) {
+    if (storage > 0) {
         score.textContent = storage;
     }
 
