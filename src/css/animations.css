@@ -38,7 +38,7 @@
     animation: growIn .5s forwards;
 }
 
-@keyframes SlideInRight {
+@keyframes slideInRight {
     from {
         transform: translateX(2000px);
     }
@@ -47,8 +47,8 @@
     }
 }
 
-.SlideInRight {
-    animation: SlideInRight .5s forwards;
+.slideInRight {
+    animation: slideInRight .5s forwards;
 }
 
 @keyframes slideOutRight {
@@ -134,10 +134,10 @@
 
 @keyframes increaseWidth {
     from {
-        width: 65%;
+        width: 75%;
     }
     to {
-        width: 100%;
+        width: 90%;
     }
 }
 
@@ -146,10 +146,11 @@
 }
 
 .compAnimation {
-    animation: increaseWidth .3s forwards, SlideInRight .3s forwards;
+    animation: increaseWidth .5s forwards .3s, slideInRight .3s forwards;
 }
 
 .compAnimationRev {
-    animation: increaseWidth 30s forwards reverse,
-    slideOutRight .3s forwards;
+    animation: slideOutRight .5s forwards, increaseWidth 10s forwards reverse;
 }
+
+/* FIX THIS */

@@ -10,9 +10,17 @@
 }
 
 :root {
+    --bg-1: hsl(214, 47%, 23%);
+    --bg-2: hsl(237, 49%, 15%);
     --black-clr: hsl(229, 25%, 31%);
     --blue-clr: hsl(229, 64%, 46%);
     --score-border: hsl(217, 16%, 45%);
+    --paper-blue-1: hsl(230, 89%, 62%);
+    --paper-blue-2: hsl(230, 89%, 65%);
+    --scissors-yellow-1: hsl(39, 89%, 49%);
+    --scissors-yellow-2: hsl(40, 84%, 53%);
+    --rock-red-1: hsl(349, 71%, 52%);
+    --rock-red-2: hsl(349, 70%, 56%);
 }
 
 html {
@@ -21,16 +29,17 @@ html {
 }
 
 .container {
-    position: relative;
-    min-height: 200px;
-    height: 100vh;
     overflow-x: hidden;
-    background: radial-gradient(circle at 50% 0%, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    background: radial-gradient(circle at 50% 0%, var(--bg-1), var(--bg-2));
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 1fr auto;
 }
 
-.container>div {
-    width: 100%;
-    position: absolute;
+.intro, 
+.game {
+    grid-column: 1/2;
+    grid-row: 1/2;
 }
 
 .intro {
@@ -39,7 +48,6 @@ html {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
 }
 
 h1 {
@@ -49,9 +57,14 @@ h1 {
     padding: 1rem;
 }
 
+button:focus, 
+button:hover {
+    outline: 0;
+    cursor: pointer;
+}
+
 .intro button {
     border: 0;
-    width: 125px;
     padding: 13px 10px;
     border-radius: 8px;
     color: rgba(255, 255, 255, 0.918);
@@ -60,28 +73,26 @@ h1 {
     font-weight: 600;
     cursor: pointer;
     margin: 1rem;
-    outline: 0;
     transition: transform 0.5s ease;
 }
 
-.intro button:active {
-    transform: translateY(10px);
-}
-
-.intro button:first-of-type {
+.play-btn {
+    width: 125px;
     background-color: hsl(230, 89%, 65%);
 }
 
-.intro button:first-of-type:hover {
+.play-btn:hover {
     background-color: hsl(230, 75%, 45%);
+    transform: rotate(-7deg);
 }
 
-.intro button:last-of-type {
+.rules-btn {
     background-color: var(--black-clr);
     width: 200px;
 }
 
-.intro button:last-of-type:hover {
+.rules-btn:hover,
+.new-game-btn:hover {
     background-color: hsl(219, 17%, 51%);
 }
 
@@ -94,6 +105,9 @@ h1 {
     height: 100vh;
     padding-top: 2rem;
     transform: translateY(-3000px);
+    position: fixed;
+    width: 100%;
+    z-index: 3;
 }
 
 .rules h2 {
@@ -102,15 +116,15 @@ h1 {
     font-size: 2rem;
 }
 
-.rules i {
+.close-rules-btn {
     color: rgb(204, 202, 202);
     font-size: 1.3rem;
     cursor: pointer;
 }
 
-.rules i:hover,
-.rules i:focus {
-    color: rgb(192, 37, 37);
+.close-rules-btn:hover,
+.close-rules-btn:focus {
+    color: var(--rock-red-1);
 }
 
 .game {
@@ -143,9 +157,9 @@ h1 {
 
 .score-wrapper {
     background-color: white;
-    flex: 0 1 15%;
+    flex: 0 1 28%;
     text-align: center;
-    padding: .5rem 1.3rem;
+    padding: .5rem .3rem;
     border-radius: 8px;
 }
 
@@ -185,8 +199,8 @@ h1 {
 }
 
 .sign-wrapper {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     padding: .6rem;
     border-radius: 50%;
     position: relative;
@@ -201,21 +215,9 @@ h1 {
     animation: bounce 1s forwards .2s;
 }
 
-.sign-wrapper::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    height: 120px;
-    width: 120px;
-    border-radius: 50%;
-    box-shadow: 0 5px 5px hsla(237, 49%, 15%, 0.4);
-    cursor: pointer;
-}
-
 .paper {
-    background: linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
-    box-shadow: 0 6px 0  hsl(230, 78%, 48%);
+    background: linear-gradient(to bottom, var(--paper-blue-1), var(--paper-blue-2));
+    box-shadow: 0 6px 0 hsl(230, 78%, 48%), 0 12px 5px hsla(237, 49%, 15%, 0.5);
 }
 
 .sign-pick .paper {
@@ -224,8 +226,8 @@ h1 {
 }
 
 .scissors {
-    background: linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
-    box-shadow: 0 6px 0 hsl(39, 99%, 36%);
+    background: linear-gradient(to bottom, var(--scissors-yellow-1), var(--scissors-yellow-2));
+    box-shadow: 0 6px 0 hsl(39, 99%, 36%), 0 12px 5px hsla(237, 49%, 15%, 0.5);
 }
 
 .sign-pick .scissors {
@@ -234,8 +236,8 @@ h1 {
 }
 
 .rock {
-    background: linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
-    box-shadow: 0 6px 0 hsl(349, 77%, 38%);
+    background: linear-gradient(to bottom, var(--rock-red-1), var(--rock-red-2));
+    box-shadow: 0 6px 0 hsl(349, 77%, 38%), 0 12px 5px hsla(237, 49%, 15%, 0.5);
 }
 
 .sign-pick .rock {
@@ -252,6 +254,7 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: inset 0 5px 0px rgb(222, 230, 233);
+    cursor: pointer;
 }
 
 .sign>img {
@@ -270,8 +273,8 @@ h1 {
     position: absolute;
 }
 
-.battle > div:not(:last-of-type) {
-    height: 170px;
+.battle>div:not(:last-of-type) {
+    height: 180px;
     transition: height .5s ease-in-out;
 }
 
@@ -282,16 +285,25 @@ h1 {
     flex-flow: column wrap;
     justify-content: space-between;
     height: 100%;
-    width: 120px;
+    width: 130px;
+}
+
+/* remove initial animation-delay achieved through js */
+.player > div {
+    animation-delay: .5s !important;  
+}
+
+.cpu > div {
+    animation-delay: 0s !important;  
 }
 
 .dummy {
     width: 100px;
     height: 100px;
     background: hsl(237, 49%, 15%);
-    margin: 0 auto;
     border-radius: 50%;
-    justify-self: center;
+    align-self: center;
+    margin-top: 14px;
 }
 
 .battle p {
@@ -300,6 +312,19 @@ h1 {
     font-weight: 700;
     font-size: .7rem;
     text-align: center;
+    letter-spacing: 1px;
+    z-index: 4;
+}
+
+.winner::before {
+    content: '';
+    position: absolute;
+    top: -87px;
+    left: -90px;
+    height: 310px;
+    width: 310px;
+    background: radial-gradient(transparent 30%, hsla(217, 16%, 45%, 0.3) 30%, hsla(217, 16%, 45%, 0.3) 40%, hsla(217, 16%, 45%, 0.2) 40%, hsla(217, 16%, 45%, 0.2) 56%, hsla(217, 16%, 45%, 0.1) 56%);
+    border-radius: 50%;
 }
 
 .result {
@@ -316,9 +341,9 @@ h1 {
 
 .play-again {
     background-color: #fff;
-    color: hsl(214, 47%, 23%);
+    color: var(--bg-1);
     display: block;
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     padding: 1rem;
     border-radius: 8px;
@@ -328,48 +353,40 @@ h1 {
     letter-spacing: .1rem;
 }
 
-.winner {
-    transition: all 1s ease;
+.play-again:hover {
+    color: var(--rock-red-1);
 }
 
-.winner::before {
-    content: '';
-    position: absolute;
-    top: -80px;
-    left: -82px;
-    height: 285px;
-    width: 285px;
-    background: radial-gradient(transparent 30%, hsla(217, 16%, 45%, 0.3) 30%, hsla(217, 16%, 45%, 0.3) 40%, hsla(217, 16%, 45%, 0.2) 40%, hsla(217, 16%, 45%, 0.2) 56%, hsla(217, 16%, 45%, 0.1) 56%);
-    border-radius: 50%;
-}
-
-.rules-btn {
+.btn-wrapper {
     grid-row: 2/3;
-    justify-self: center;
-    align-self: center;
-    background-color: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.527);
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 3;
+}
+
+.btn-wrapper button {
     width: 125px;
     padding: 10px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.527);
     border-radius: 8px;
     color: rgba(255, 255, 255, 0.918);
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 600;
     cursor: pointer;
+    transition: transform .5s ease;
 }
-
-.rules-btn:hover, 
-.rules-btn:focus,
-.result button:hover, 
-.result button:focus {
-    outline: 0;
-} 
 
 .attribution {
     font-size: 11px;
     text-align: center;
     padding: 1rem;
+    background-color: #fff;
+    grid-column: 1/2;
+    grid-row: 2/3;
 }
 
 .attribution p {
@@ -389,9 +406,42 @@ h1 {
     text-decoration: underline;
 }
 
-@media screen and (min-width: 1200px) {
-    .score-board-wrapper {
-        /* height: 30vh; */
+@media screen and (min-width: 1001px) {
+    .rules {
+        height: 500px;
+        width: 480px !important;
+        left: 0;
+        right: 0;
+        margin: 20vh auto;
+        border-radius: 8px;
+        flex-flow: row wrap;
+        align-items: unset;
+        padding: 3rem;
+        position: absolute;
+    }
+
+    .rules h2,
+    .close-rules-btn {
+        font-size: 2.3rem;
+    }
+
+    .close-rules-btn {
+        margin-right: 0;
+        margin-left: auto;
+    }
+
+    .rules > div   {
+        order: 2;
+        flex-basis: 80%;
+        margin-top: 2rem;
+    }
+
+    .drop-shadow.active {
+        background-color: hsla(237, 49%, 15%, 0.466);
+        width: 100vw;
+        position: fixed;
+        height: 100%;
+        z-index: 2;
     }
 
     .score-board {
@@ -400,7 +450,8 @@ h1 {
     }
 
     .score-wrapper {
-        padding: .7rem 3rem;
+        padding: .7rem .5rem;
+        flex-basis: 20%;
     }
 
     .logo {
@@ -418,87 +469,113 @@ h1 {
     }
 
     .content {
-        width: 370px;
-        height: 530px;
+        width: 460px;
+        height: 547px;
+        padding-top: 2rem;
+        background-position: center bottom;
     }
 
     .sign-wrapper {
-        width: 200px;
-        height: 200px;
+        width: 230px;
+        height: 230px;
         padding: 1.4rem;
     }
 
-    .sign-wrapper::after {
-        width: 200px;
-        height: 200px;
+    .paper {
+        box-shadow: 0 13px 0 hsl(230, 78%, 48%), 0 22px 5px hsla(237, 49%, 15%, 0.5);
     }
 
     .sign-pick .paper {
-        top: 20px;
+        top: 40px;
         left: -70px;
     }
 
+    .scissors {
+        box-shadow: 0 13px 0 hsl(39, 99%, 36%), 0 22px 5px hsla(237, 49%, 15%, 0.5);   
+    }
+
     .sign-pick .scissors {
-        top: 20px;
+        top: 40px;
         right: -70px;
     }
 
-    .sign-pick .rock {
-        bottom: 50px;
-        left: 85px;
+    .rock {
+        box-shadow: 0 13px 0 hsl(349, 77%, 38%), 0 22px 5px hsla(237, 49%, 15%, 0.5);
     }
 
-    .rules-btn {
+    .sign-pick .rock {
+        bottom: -16px;
+        left: 127px;
+    }
+
+    .sign {
+        box-shadow: inset 0 10px 0px rgb(222, 230, 233);
+    }
+
+    .play .rules-btn {
         justify-self: end;
     }
 
     .battle {
-        padding: 0 7%;
+        padding: 0 5%;
         margin: 0 auto;
         align-items: center;
-        width: 65%;
+        width: 75%;
         left: 0;
         right: 0;
     }
 
-    .battle > div:not(:last-of-type) {
+    .battle>div:not(:last-of-type) {
         height: 80%;
-        flex: 0 1 300px;
+        flex: 0 1 350px;
     }
 
-    .battle > div:nth-of-type(2) {
+    .battle>div:nth-of-type(2) {
         order: 2;
     }
 
     .player,
     .cpu {
         flex-flow: column-reverse wrap;
-        width: 300px;
-        height: 90%;
+        width: 350px;
+        height: 100%;
     }
 
     .battle .sign-wrapper {
-        width: 300px;
-        height: 300px;
+        width: 350px;
+        height: 350px;
         padding: 2.5rem;
     }
-    
-    .battle .sign-wrapper::after {
-        width: 300px;
-        height: 300px;
+
+    .battle .paper {
+        box-shadow: 0 15px 0 hsl(230, 78%, 48%);
+    }
+
+    .battle .scissors {
+        box-shadow: 0 15px 0 hsl(39, 99%, 36%);
+    }
+
+    .battle .rock {
+        box-shadow: 0 15px 0 hsl(349, 77%, 38%);
+    }
+
+    .battle p {
+        font-size: 1.5rem;
+        letter-spacing: 4px;
     }
 
     .dummy {
         width: 250px;
         height: 250px;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
+        margin-top: 0;
     }
 
     .winner::before {
-        width: 700px;
-        height: 700px;
-        top: -111px;
-        left: -200px;
+        width: 800px;
+        height: 830px;
+        top: -143px;
+        left: -225px;
     }
 
     .result {
@@ -507,7 +584,216 @@ h1 {
         align-self: center;
     }
 
+    .play-again {
+        cursor: pointer;
+        width: 90%;
+    }
+
     .battle .sizeIncrease {
         flex: 0 1 17rem;
+    }
+
+    .btn-wrapper {
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 1001px) and (max-width: 1279px) {
+    .battle {
+        width: 70%;
+    }
+
+    .battle>div:not(:last-of-type) {
+        height: 63%;
+        flex: 0 1 250px;
+    }
+
+    .battle .sign-wrapper {
+        width: 250px;
+        height: 250px;
+        padding: 1.5rem;
+    }
+
+    .player,
+    .cpu {
+        width: 250px;
+    }
+
+    .battle p {
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+    }
+
+    .dummy {
+        width: 180px;
+        height: 180px;
+        margin-bottom: 33px;
+    }
+
+    .result {
+        margin-top: 70px;
+    }
+
+    .winner::before {
+        width: 585px;
+        height: 620px;
+        top: -83px;
+        left: -167px;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1000px) {
+    .score-wrapper {
+        flex-basis: 20%;
+    }
+
+    .content {
+        width: 350px;
+        height: 530px;
+    }
+
+    .sign-wrapper {
+        width: 180px;
+        height: 180px;
+        padding: 1rem;
+    }
+
+    .paper {
+        box-shadow: 0 10px 0 hsl(230, 78%, 48%), 0 18px 5px hsla(237, 49%, 15%, 0.5);
+    }
+
+    .sign-pick .paper {
+        top: 28px;
+        left: -60px;
+    }
+
+    .scissors {
+        box-shadow: 0 10px 0 hsl(39, 99%, 36%), 0 18px 5px hsla(237, 49%, 15%, 0.5);   
+    }
+
+    .sign-pick .scissors {
+        top: 28px;
+        right: -60px;
+    }
+
+    .rock {
+        box-shadow: 0 10px 0 hsl(349, 77%, 38%), 0 18px 5px hsla(237, 49%, 15%, 0.5);
+    }
+
+    .sign-pick .rock {
+        bottom: 60px;
+        left: 90px;
+    }
+
+    .battle {
+        width: 80%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    .battle>div:not(:last-of-type) {
+        height: 240px;
+        width: 180px;
+    }
+
+    .player, .cpu {
+        width: 100%;
+    }
+
+    .dummy {
+        width: 120px;
+        height: 120px;
+        margin-top: 34px;
+    }
+
+    .battle p {
+        font-size: 1rem;
+    }
+
+    .winner::before {
+        top: -123px;
+        left: -122px;
+        height: 430px;
+        width: 425px;
+    }
+}
+
+@media screen and (max-width: 359px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .rules img {
+        width: 80%;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .score-wrapper {
+        flex-basis: 40%;
+    }
+
+    .score-wrapper small {
+        font-size: .8rem;
+    }
+
+    .score {
+        font-size: 1.8rem;
+    }
+
+    .content {
+        width: 180px;
+        height: 300px;
+        background-position: center 50px;
+    }
+
+    .sign-wrapper {
+        width: 100px;
+        height: 100px;
+    }
+
+    .sign-pick .paper {
+        top: 10px;
+        left: -30px;
+    }
+
+    .sign-pick .scissors {
+        top: 10px;
+        right: -30px;
+    }
+
+    .sign-pick .rock {
+        bottom: 55px;
+        left: 40px;
+    }
+
+    .battle>div:not(:last-of-type) {
+        height: 140px;
+    }
+
+    .player, .cpu {
+        width: 100px;
+    }
+
+    .battle p {
+        font-size: .5rem;
+    }
+
+    .winner::before {
+        width: 240px;
+        height: 240px;
+        top: -67px;
+        left: -69px;
+    }
+
+    .result h1 {
+        font-size: 1.7rem;
+    }
+
+    .play-again {
+        padding: .8rem;
+        width: 60%;
     }
 }
